@@ -78,6 +78,23 @@ namespace CRUDASPNETCoreMVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var contact = _context.Contact.Find(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return View(contact);
+        }
+
         public IActionResult Privacy()
         {
             return View();
