@@ -31,6 +31,7 @@
                                     <th>@Html.DisplayNameFor(m => m.CellPhone)</th>
                                     <th>@Html.DisplayNameFor(m => m.Email)</th>
                                     <th>@Html.DisplayNameFor(m => m.CreatedDate)</th>
+                                    <th>@Html.DisplayNameFor(m => m.UpdatedDate)</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                         <td>@Html.DisplayFor(m => item.CellPhone)</td>
                                         <td>@Html.DisplayFor(m => item.Email)</td>
                                         <td>@Html.DisplayFor(m => item.CreatedDate)</td>
+                                        <td>@Html.DisplayFor(m => item.UpdatedDate)</td>
                                         <td>
                                             <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i> Edit

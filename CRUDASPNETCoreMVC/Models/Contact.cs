@@ -20,5 +20,6 @@ namespace CRUDASPNETCoreMVC.Models
         public string Email { get; set; }
 
         public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

@@ -45,6 +45,39 @@ namespace CRUDASPNETCoreMVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var contact = _context.Contact.Find(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return View(contact);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                // refresh updatedDate
+                contact.UpdatedDate = DateTime.Now;
+                _context.Contact.Update(contact);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
