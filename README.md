@@ -3,22 +3,22 @@
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?style=for-the-badge&logo=.net&logoColor=white)
 ![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-512BD4?style=for-the-badge&logo=nuget&logoColor=white)
 
-## 📖 Descripción
+## 📖 Description
 
-Este proyecto utiliza **ASP.NET Core MVC** junto con **Entity Framework Core** para desarrollar una aplicación web moderna y escalable. Con soporte para bases de datos relacionales, implementa migraciones y manejo eficiente de datos.
+This project leverages **ASP.NET Core MVC** along with **Entity Framework Core** to develop a modern and scalable web application. With support for relational databases, it implements migrations and efficient data handling.
 
-## 🚀 Requisitos
+## 🚀 Requirements
 
-Antes de comenzar, asegúrate de tener instalado lo siguiente:
+Before starting, ensure you have the following installed:
 
 - **[.NET SDK 8](https://dotnet.microsoft.com/download/dotnet/8.0)**
-- **Visual Studio 2022** o **Visual Studio Code**
-- **SQL Server** u otro proveedor compatible con Entity Framework Core
+- **Visual Studio 2022** or **Visual Studio Code**
+- **SQL Server** or another provider compatible with Entity Framework Core
 
-## 📂 Estructura del Proyecto
+## 📂 Project Structure
 
 ```
-📦 Proyecto
+📦 Project
 ├── 📁 Controllers
 ├── 📁 Models
 ├── 📁 Views
@@ -28,68 +28,68 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 └── 📄 Program.cs
 ```
 
-## 🔧 Configuración
+## 🔧 Setup
 
-### 1. Clona el repositorio
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/tuusuario/tu-repositorio.git
-cd tu-repositorio
+git clone https://github.com/yourusername/your-repository.git
+cd your-repository
 ```
 
-### 2. Configura la conexión a la base de datos
+### 2. Configure the database connection
 
-Abre el archivo `appsettings.json` y modifica el valor de `ConnectionStrings`:
+Open the `appsettings.json` file and modify the `ConnectionStrings` value:
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=tu-servidor;Database=tu-base-datos;User Id=tu-usuario;Password=tu-contraseña;"
+  "DefaultConnection": "Server=your-server;Database=your-database;User Id=your-username;Password=your-password;"
 }
 ```
 
-### 3. Restaura las dependencias
+### 3. Restore dependencies
 
 ```bash
 dotnet restore
 ```
 
-### 4. Aplica las migraciones
+### 4. Apply migrations
 
-Ejecuta los siguientes comandos de **Entity Framework Core** en la consola de administración de paquetes o terminal:
+Run the following **Entity Framework Core** commands in the Package Manager Console or terminal:
 
-#### Crear una nueva migración
+#### Create a new migration
 ```bash
 dotnet ef migrations add InitialCreate
 ```
 
-#### Aplicar las migraciones a la base de datos
+#### Apply migrations to the database
 ```bash
 dotnet ef database update
 ```
 
-#### Eliminar la última migración
+#### Remove the last migration
 ```bash
 dotnet ef migrations remove
 ```
 
-## ✨ Tecnologías Utilizadas
+## ✨ Technologies Used
 
-- **ASP.NET Core MVC**: Framework de desarrollo web de Microsoft.
-- **Entity Framework Core**: ORM moderno para .NET.
-- **SQL Server**: Base de datos relacional (puedes cambiarlo por otro proveedor).
-- **Bootstrap 5**: Para el diseño responsivo de la interfaz de usuario.
+- **ASP.NET Core MVC**: Microsoft’s web development framework.
+- **Entity Framework Core**: Modern ORM for .NET.
+- **SQL Server**: Relational database (can be replaced with another provider).
+- **Bootstrap 5**: For responsive UI design.
 
-## 📸 Capturas
+## 📸 Screenshots
 
-### Pantalla de Inicio
+### Home Page
 
-> ¡Agrega capturas aquí para que los usuarios vean cómo luce tu aplicación!
+> Add screenshots here to showcase your application!
 
-## 📜 Licencia
+## 📜 License
 
-Este proyecto está bajo la licencia [MIT](LICENSE).
+This project is licensed under the [MIT](LICENSE).
 
 ---
 
-¡Contribuciones son bienvenidas! Si tienes alguna sugerencia o encuentras un problema, no dudes en abrir un **issue** o enviar un **pull request**.
+Contributions are welcome! If you have any suggestions or encounter any issues, feel free to open an **issue** or submit a **pull request**.
 
