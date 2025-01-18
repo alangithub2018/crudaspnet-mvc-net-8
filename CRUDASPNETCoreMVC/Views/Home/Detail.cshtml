@@ -1,0 +1,27 @@
+﻿@model CRUDASPNETCoreMVC.Models.Contact
+@{
+    ViewData["Title"] = "Contact Detail";
+}
+
+<h1 class="text-center">Contacts using .NET8 (.NET Core MVC)</h1>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>User details</strong></h1>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Name: </strong>@Html.DisplayFor(m => m.Name)</li>
+                    <li class="list-group-item"><strong>Phone: </strong>@Html.DisplayFor(m => m.Phone)</li>
+                    <li class="list-group-item"><strong>CellPhone: </strong>@Html.DisplayFor(m => m.CellPhone)</li>
+                    <li class="list-group-item"><strong>Email: </strong>@Html.DisplayFor(m => m.Email)</li>
+                    <li class="list-group-item"><strong>CreatedDate: </strong>@Html.DisplayFor(m => m.CreatedDate)</li>
+                </ul>
+
+                <a asp-controller="Home" asp-action="Index">Go back</a>
+            </div>
+        </div>
+    </div>
+</div>
