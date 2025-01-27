@@ -1,4 +1,5 @@
 using CRUDASPNETCoreMVC.Data;
+using CRUDASPNETCoreMVC.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IEmailService, EmailService>();
 
 var app = builder.Build();
 

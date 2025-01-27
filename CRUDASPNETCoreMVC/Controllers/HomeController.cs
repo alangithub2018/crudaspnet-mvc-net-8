@@ -1,13 +1,9 @@
 using System.Diagnostics;
 using CRUDASPNETCoreMVC.Data;
 using CRUDASPNETCoreMVC.Models;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Gmail.v1;
-using MailKit.Net.Smtp;
-using MailKit.Security;
+using CRUDASPNETCoreMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MimeKit;
 
 namespace CRUDASPNETCoreMVC.Controllers
 {
@@ -15,51 +11,22 @@ namespace CRUDASPNETCoreMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly IEmailService _emailService;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IEmailService emailService)
         {
             _logger = logger;
             _context = context;
-            _configuration = configuration;
+            _emailService = emailService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            // needed configurations for oauth2.0, get clientId from appsettings.json
-            var clientId = _configuration["ClientId"];
-            var clientSecret = _configuration["ClientSecret"];
+            // Authenticate using OAuth 2.0
+            //var credential = await _emailService.AuthenticateAsync();
 
-            var credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                new ClientSecrets
-                {
-                    ClientId = clientId,
-                    ClientSecret = clientSecret
-                },
-                new[] { GmailService.Scope.MailGoogleCom },
-                "user",
-                CancellationToken.None
-            );
-
-            // to send emails
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Email test", "from_user@gmail.com"));
-            message.To.Add(new MailboxAddress("Email sent", "destination@gmail.com"));
-            message.Subject = "Email test";
-            message.Body = new TextPart("plain")
-            {
-                Text = "This is a test email"
-            };
-
-            using (var client = new SmtpClient())
-            {
-                await client.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                var oauth2 = new SaslMechanismOAuth2("from_user@gmail.com", credential.Token.AccessToken);
-                await client.AuthenticateAsync(oauth2);
-                await client.SendAsync(message);
-                await client.DisconnectAsync(true);
-            }
+            //await _emailService.SendEmailAsync(credential, "username@gmail.com", "destination@example.com", "subject", "email body");
 
             return View(await _context.Contact.ToListAsync());
         }
