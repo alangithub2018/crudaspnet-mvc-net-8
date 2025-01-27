@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using CRUDASPNETCoreMVC.Data;
 using CRUDASPNETCoreMVC.Models;
+using CRUDASPNETCoreMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,16 +11,23 @@ namespace CRUDASPNETCoreMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly IEmailService _emailService;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IEmailService emailService)
         {
             _logger = logger;
             _context = context;
+            _emailService = emailService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            // Authenticate using OAuth 2.0
+            //var credential = await _emailService.AuthenticateAsync();
+
+            //await _emailService.SendEmailAsync(credential, "username@gmail.com", "destination@example.com", "subject", "email body");
+
             return View(await _context.Contact.ToListAsync());
         }
 
